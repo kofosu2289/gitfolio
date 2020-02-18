@@ -13,8 +13,8 @@ const ListItem = styled.li`
 `;
 
 
-const label = styled.span`
-  font-weight: strong;
+const Label = styled.span`
+  font-weight: bold;
 `;
 
 const List = ({items}) => (
