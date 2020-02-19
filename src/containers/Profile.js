@@ -54,7 +54,7 @@ class Profile extends Component {
 
     const items = [
       { label: 'html_url', value: <Link url={data.html_url} title='Github URL' /> },
-      { label: 'repos_url', value: data.repos_url },
+      { label: 'repos_url', value: <Link url={data.repos_url} title='Github Repos URL' /> },
       { label: 'name', value: data.name},
       { label: 'company', value: data.company },
       { label: 'location', value: data.location },
