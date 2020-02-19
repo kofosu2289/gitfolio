@@ -19,29 +19,37 @@ class Profile extends Component {
       data: {},
       repositories: [],
       loading: true,
+      error:'',
     }
   }
 
   async componentDidMount() {
-    const profile = await fetch('https://api.github.com/users/kofosu2289');
-    const profileJSON = await profile.json();
+    try {
+      const profile = await fetch('https://api.github.com/users/kofosu2289');
+      const profileJSON = await profile.json();
 
-    if (profileJSON) {
-      const repositories = await fetch(profileJSON.repos_url);
-      const repositoriesJSON = await repositories.json();
+      if (profileJSON) {
+        const repositories = await fetch(profileJSON.repos_url);
+        const repositoriesJSON = await repositories.json();
+        this.setState({
+          data: profileJSON,
+          repositories: repositoriesJSON,
+          loading: false,
+        })
+      }
+    } catch (error) {
       this.setState({
-        data: profileJSON,
-        repositories: repositoriesJSON,
-        loading:false,
-      })
+        loading: false,
+        error: error.message,
+      });
     }
   }
 
   render() {
-    const { data, repositories, loading } = this.state;
+    const { data, repositories, loading, error } = this.state;
 
-    if (loading) {
-      return <div>Loading...</div>
+    if (loading || error) {
+      return <div>{loading ? 'Loading...' : error}</div>
     }
 
     const items = [
