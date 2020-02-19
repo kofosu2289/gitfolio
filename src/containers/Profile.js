@@ -58,7 +58,7 @@ class Profile extends Component {
       { label: 'name', value: data.name},
       { label: 'company', value: data.company },
       { label: 'location', value: data.location },
-      { label: 'website', value: <Link url={data.blog} title='Personal Website Link' />}
+      { label: 'website', value: <Link url={data.blog} title='Personal Website URL' />},
       { label: 'bio', value: data.bio }
     ]
 
