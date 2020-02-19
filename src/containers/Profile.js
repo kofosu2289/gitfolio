@@ -58,7 +58,6 @@ class Profile extends Component {
       { label: 'name', value: data.name},
       { label: 'company', value: data.company },
       { label: 'location', value: data.location },
-      { label: 'email', value: data.email },
       { label: 'bio', value: data.bio }
     ]
 
